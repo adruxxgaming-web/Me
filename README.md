@@ -8,6 +8,12 @@ Business Management Engineer from Universidad de Monterrey building practical te
 
 I focus on turning business problems into structured, scalable, and useful digital systems: automation workflows, AI-assisted processes, technical documentation, SaaS concepts, and tools that help teams work with more clarity and speed.
 
+<p align="center">
+  <a href="https://www.linkedin.com/in/adri%C3%A1n-hinojosa-082548180/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect%20with%20me-2563EB?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+</p>
+
 ## Current Focus
 
 - Building stronger technical skills in **AI engineering**, **automation**, and **software prototyping**
@@ -83,12 +89,10 @@ My goal is to combine business strategy with technical execution to create solut
 
 ## Connect
 
-- LinkedIn: `[Add your LinkedIn UR(https://www.linkedin.com/in/adri%C3%A1n-hinojosa-082548180/)`
+- LinkedIn: [Connect with me](https://www.linkedin.com/in/adri%C3%A1n-hinojosa-082548180/)
 - Portfolio: `Add your portfolio URL`
 - Email: `adrian.hinojosa@sotesa.mx`
 
 ---
 
 > Building business systems with clarity, automation, and practical AI.
-
-<p align="center"> <img height="165" src="https://github-readme-stats.vercel.app/api?username=adruxxgaming-web&show_icons=true&theme=github_dark&hide_border=true" /> <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=adruxxgaming-web&layout=compact&theme=github_dark&hide_border=true" /> </p>
