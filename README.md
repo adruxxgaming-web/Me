@@ -1,4 +1,4 @@
-Hi, I'm Adrian
+<p align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563EB,100:10B981&height=180&section=header&text=Adrian%20Hinojosa%20Gutierrez&fontSize=36&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=AI%20Automation%20%7C%20Technology%20Consulting%20%7C%20Business%20Operations&descAlignY=58&descSize=16" /> </p> Hi, I'm Adrian
 Business Management Engineer from Universidad de Monterrey building practical technology solutions at the intersection of AI, automation, project management, and business operations.
 
 I focus on turning business problems into structured, scalable, and useful digital systems: automation workflows, AI-assisted processes, technical documentation, SaaS concepts, and tools that help teams work with more clarity and speed.
