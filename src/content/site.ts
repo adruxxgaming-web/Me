@@ -4,8 +4,8 @@ export const site = {
   fullName: "Adrián Hinojosa Gutierrez",
   email: "adrian.hinojosa@sotesa.mx",
   location: "Monterrey, Nuevo León, México",
-  // Set this once the domain is known (used for metadata / hreflang).
-  url: "https://example.com",
+  // Production URL (used for metadata / hreflang). Update if a custom domain is added.
+  url: "https://adrianportfolio-blush.vercel.app",
   cv: {
     en: "/cv/AdrianHinojosa_CV_EN.pdf",
     es: "/cv/AdrianHinojosa_CV_ES.pdf",
