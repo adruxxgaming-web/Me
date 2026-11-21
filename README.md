@@ -1,6 +1,9 @@
 # Adrián Hinojosa — Portfolio
 
-Bilingual (EN/ES) single-page portfolio.
+Bilingual (EN/ES) portfolio with two pages:
+
+- **`/[lang]`** — professional page (dark editorial style: black, crimson, off-white; Anton + Inter).
+- **`/[lang]/me`** — personal page (bright Minecraft-inspired style: cream, grass green, pixel headlines).
 
 **Stack:** Next.js 16 (App Router, Cache Components) · TypeScript · Tailwind CSS 4 · GSAP + ScrollTrigger · Lenis · deployed on Vercel.
 
@@ -23,26 +26,35 @@ src/
 ├─ i18n.ts                  locales + getDictionary()
 ├─ content/
 │  ├─ types.ts              Dictionary type (EN and ES must both satisfy it)
-│  ├─ en.ts / es.ts         ALL translatable text, projects, certs, experience
+│  ├─ en.ts / es.ts         translatable text, projects, experience, personal page copy
+│  ├─ certifications.ts     all certifications (shared by both languages) + issuer logos
 │  └─ site.ts               non-translated data: email, socials, CV paths
-├─ app/[lang]/              layout.tsx (metadata, <html lang>) + page.tsx
+├─ app/[lang]/              layout.tsx (fonts, metadata) · page.tsx (professional) · me/page.tsx (personal)
 ├─ components/
-│  ├─ sections/             Hero, About, Work, Skills, Certifications, Experience, Contact, Footer
+│  ├─ sections/             Hero, Marquee, About, Stats, Work, Skills, Certifications, Experience, Contact, Footer
 │  ├─ ui/                   Nav, Section, Chip
-│  └─ motion/SmoothScroll   Lenis ↔ GSAP ticker ↔ ScrollTrigger
+│  ├─ craft/                personal page: CraftHeader, PixelIcon
+│  └─ motion/               SmoothScroll (Lenis ↔ GSAP ticker) · Animations (data-attribute driven)
 └─ lib/gsap.ts              registers GSAP plugins once
 public/cv/                  AdrianHinojosa_CV_EN.pdf, AdrianHinojosa_CV_ES.pdf
+public/images/              personal-page illustration + issuer logos (issuers/)
 docs/original-profile-readme.md   the previous GitHub README (source material)
 ```
 
 Edit content in `src/content/*` — never inside components.
-Elements marked `data-anim="…"` are the planned animation hooks.
 
-## Pending (placeholders in the UI)
+## Animations
 
-- [ ] Profile photo (`About`)
+`Animations.tsx` is driven by data attributes, so sections stay Server Components:
+`[data-line] > span` (masked line reveal), `[data-hero-fade]`, `[data-reveal]` (on scroll), `[data-count]` (counter).
+Hidden initial states exist only under `prefers-reduced-motion: no-preference`. Mount `<Animations />`
+inside each page (after the content), never in the layout, so it runs after hydration.
+
+## Pending
+
+- [ ] Profile photo (hero of the professional page)
 - [ ] Project case-study summaries (`work.projects[*].draft`)
-- [ ] Certification years + credential links (`certifications.items[*].year/url`) and issuer logos
+- [ ] Credential links (`url`) and issuer logos for Huawei, Anthropic, Met Conecta, UPV, Maryland, Empower Data, IBM
+- [ ] Date for the IBM Python certificate
 - [ ] Production domain in `src/content/site.ts` (`site.url`)
-- [ ] Mobile navigation menu
-- [ ] Visual design pass, then animations (hero background, scroll reveals, pinned sections)
+- [ ] Decide whether the phone number in the public CV PDFs stays

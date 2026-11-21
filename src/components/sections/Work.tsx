@@ -4,41 +4,50 @@ import { Chip, Section } from "@/components/ui/Section";
 export function Work({ dict }: { dict: Dictionary }) {
   const { work } = dict;
   return (
-    <Section id="work" title={work.title} intro={work.intro}>
-      <ul className="grid gap-6 md:grid-cols-2">
+    <Section
+      id="work"
+      index="02"
+      label={work.title}
+      title={work.title}
+      intro={work.intro}
+    >
+      <ul className="border-t border-line">
         {work.projects.map((project, index) => (
           <li
             key={project.id}
-            data-anim="project-card"
-            className="flex flex-col rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800"
+            data-reveal
+            className="group border-b border-line transition-colors hover:bg-graphite"
           >
-            <div className="flex items-start justify-between gap-4">
-              <span className="font-mono text-sm text-zinc-500">
+            <article className="grid gap-6 px-0 py-10 md:grid-cols-12 md:px-4 md:py-12">
+              <p className="display text-5xl text-crimson md:col-span-2 md:text-6xl">
                 {String(index + 1).padStart(2, "0")}
-              </span>
-              <span className="rounded bg-zinc-100 px-2 py-0.5 text-xs uppercase tracking-wide text-zinc-600 dark:bg-zinc-900 dark:text-zinc-400">
-                {project.type}
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold">{project.title}</h3>
-            <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-              {project.summary}
-            </p>
-
-            <p className="mt-5 text-xs font-medium uppercase tracking-wide text-zinc-500">
-              {work.focusLabel}
-            </p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {project.focus.map((item) => (
-                <Chip key={item}>{item}</Chip>
-              ))}
-            </div>
-
-            {project.draft ? (
-              <p className="mt-6 border-t border-dashed border-zinc-300 pt-4 text-sm text-zinc-500 dark:border-zinc-700">
-                {work.draftBadge}
               </p>
-            ) : null}
+
+              <div className="md:col-span-6">
+                <p className="label text-mute">{project.type}</p>
+                <h3 className="display mt-3 text-4xl transition-transform duration-500 group-hover:translate-x-2 md:text-6xl">
+                  {project.title}
+                </h3>
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-silver">
+                  {project.summary}
+                </p>
+              </div>
+
+              <div className="md:col-span-4">
+                <p className="label text-mute">{work.focusLabel}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.focus.map((item) => (
+                    <Chip key={item}>{item}</Chip>
+                  ))}
+                </div>
+                {project.draft ? (
+                  <p className="label mt-6 flex items-center gap-2 text-mute">
+                    <span className="size-1.5 rounded-full bg-crimson" />
+                    {work.draftBadge}
+                  </p>
+                ) : null}
+              </div>
+            </article>
           </li>
         ))}
       </ul>

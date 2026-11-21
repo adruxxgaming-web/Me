@@ -3,51 +3,55 @@ import { Chip, Section } from "@/components/ui/Section";
 
 export function About({ dict }: { dict: Dictionary }) {
   const { about } = dict;
+  const [statement, ...rest] = about.paragraphs;
+
   return (
-    <Section id="about" title={about.title}>
-      <div className="grid gap-12 lg:grid-cols-[280px_1fr]">
-        {/* Photo placeholder — pending */}
-        <div
-          data-anim="about-photo"
-          className="flex aspect-[4/5] items-center justify-center rounded-2xl border border-dashed border-zinc-300 text-sm text-zinc-500 dark:border-zinc-700"
-        >
-          {about.photoPending}
+    <Section id="about" index="01" label={about.title}>
+      <p
+        data-reveal
+        className="text-3xl font-medium leading-[1.2] tracking-tight text-paper md:text-5xl"
+      >
+        {statement}
+      </p>
+
+      <div className="mt-14 grid gap-10 md:grid-cols-2">
+        <div data-reveal className="space-y-5 text-base leading-relaxed text-silver">
+          {rest.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
         </div>
 
-        <div className="space-y-10">
-          <div className="space-y-4 text-lg text-zinc-700 dark:text-zinc-300">
-            {about.paragraphs.map((p) => (
-              <p key={p}>{p}</p>
+        <div data-reveal>
+          <h3 className="label text-crimson-bright">{about.focusTitle}</h3>
+          <ul className="mt-4 divide-y divide-line border-y border-line">
+            {about.focus.map((item) => (
+              <li key={item} className="py-4 text-sm leading-relaxed text-bone">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-14 grid gap-10 border-t border-line pt-10 md:grid-cols-2">
+        <div data-reveal>
+          <h3 className="label text-crimson-bright">{about.areasTitle}</h3>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {about.areas.map((area) => (
+              <Chip key={area}>{area}</Chip>
             ))}
           </div>
-
-          <div className="grid gap-10 sm:grid-cols-2">
-            <div>
-              <h3 className="font-semibold">{about.focusTitle}</h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
-                {about.focus.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold">{about.areasTitle}</h3>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {about.areas.map((area) => (
-                  <Chip key={area}>{area}</Chip>
-                ))}
-              </div>
-
-              <h3 className="mt-8 font-semibold">{about.languagesTitle}</h3>
-              <ul className="mt-3 space-y-1 text-zinc-600 dark:text-zinc-400">
-                {about.languages.map((l) => (
-                  <li key={l.name}>
-                    <span className="text-foreground">{l.name}</span> — {l.level}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+        </div>
+        <div data-reveal>
+          <h3 className="label text-crimson-bright">{about.languagesTitle}</h3>
+          <ul className="mt-4 space-y-2 text-sm">
+            {about.languages.map((l) => (
+              <li key={l.name} className="flex justify-between gap-4 border-b border-line pb-2">
+                <span className="text-paper">{l.name}</span>
+                <span className="text-mute">{l.level}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </Section>

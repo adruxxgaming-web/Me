@@ -10,16 +10,6 @@ export interface Project {
   url: string | null;
 }
 
-export interface Certification {
-  id: string;
-  name: string;
-  issuer: string;
-  /** null = still to fill in. */
-  year: string | null;
-  /** Credential / verification link. null = still to fill in. */
-  url: string | null;
-}
-
 export interface Role {
   id: string;
   title: string;
@@ -42,16 +32,24 @@ export interface Dictionary {
     cv: string;
     switchTo: string;
     switchToLabel: string;
+    personal: string;
+    menu: string;
+    close: string;
   };
   hero: {
-    greeting: string;
-    role: string;
+    kicker: string;
+    tags: string[];
     tagline: string;
+    currentLabel: string;
+    currentValue: string;
+    basedLabel: string;
+    photoPending: string;
     ctaWork: string;
     ctaCv: string;
     ctaContact: string;
     scroll: string;
   };
+  stats: { items: { value: number; suffix: string; label: string }[] };
   about: {
     title: string;
     paragraphs: string[];
@@ -61,7 +59,6 @@ export interface Dictionary {
     areas: string[];
     languagesTitle: string;
     languages: { name: string; level: string }[];
-    photoPending: string;
   };
   work: {
     title: string;
@@ -79,7 +76,10 @@ export interface Dictionary {
     intro: string;
     pendingLabel: string;
     viewCredential: string;
-    items: Certification[];
+    totalLabel: string;
+    highlightsTitle: string;
+    moreTitle: string;
+    expiresLabel: string;
   };
   experience: {
     title: string;
@@ -95,6 +95,35 @@ export interface Dictionary {
     emailLabel: string;
     socialsTitle: string;
     downloadCv: string;
+    personalText: string;
+    personalLink: string;
+  };
+  personal: {
+    meta: { title: string; description: string };
+    nav: { portfolio: string; hobbies: string; games: string; social: string };
+    eyebrow: string;
+    title: string;
+    intro: string;
+    ctaPrimary: string;
+    sceneLabel: string;
+    sceneCaption: string;
+    aboutTitle: string;
+    about: string[];
+    hobbiesTitle: string;
+    hobbies: {
+      id: "sports" | "gaming" | "heroes" | "movies";
+      title: string;
+      text: string;
+      items: string[];
+    }[];
+    gamesTitle: string;
+    gamesIntro: string;
+    games: string[];
+    socialsTitle: string;
+    socialsText: string;
+    closingTitle: string;
+    closingText: string;
+    back: string;
   };
   footer: { rights: string; builtWith: string };
 }

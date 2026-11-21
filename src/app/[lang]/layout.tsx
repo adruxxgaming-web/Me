@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Anton, Inter, Press_Start_2P } from "next/font/google";
 import { getDictionary, hasLocale, locales } from "@/i18n";
 import { site } from "@/content/site";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import "../globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+});
+const inter = Inter({ variable: "--font-inter", subsets: ["latin", "latin-ext"] });
+// Blocky pixel face for the personal page headlines.
+const pixel = Press_Start_2P({
+  variable: "--font-press",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
 });
 
 export function generateStaticParams() {
@@ -54,9 +62,16 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${anton.variable} ${inter.variable} ${pixel.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <noscript>
+          {/* Without JS nothing should stay hidden waiting for an animation */}
+          <style>{`[data-line] > span{transform:none!important}[data-reveal],[data-hero-fade]{opacity:1!important}`}</style>
+        </noscript>
+        {/* Each page brings its own header/footer and theme. */}
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }

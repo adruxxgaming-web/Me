@@ -1,31 +1,40 @@
 import type { Dictionary, Role } from "@/content/types";
 import { Section } from "@/components/ui/Section";
 
-function Timeline({ roles }: { roles: Role[] }) {
+function RoleList({ roles }: { roles: Role[] }) {
   return (
-    <ol className="space-y-10 border-l border-zinc-300 pl-8 dark:border-zinc-700">
+    <ol className="border-t border-line">
       {roles.map((role) => (
-        <li key={role.id} data-anim="timeline-item" className="relative">
-          <span
-            aria-hidden
-            className="absolute -left-[37px] top-2 size-2.5 rounded-full bg-foreground"
-          />
-          <p className="font-mono text-sm text-zinc-500">{role.period}</p>
-          <h3 className="mt-1 text-lg font-semibold">{role.title}</h3>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            {role.org}
-            {role.location ? ` · ${role.location}` : ""}
+        <li
+          key={role.id}
+          data-reveal
+          className="grid gap-4 border-b border-line py-10 md:grid-cols-12"
+        >
+          <p className="label pt-1 text-crimson-bright md:col-span-3">
+            {role.period}
           </p>
-          {role.summary ? (
-            <p className="mt-3 max-w-3xl text-zinc-700 dark:text-zinc-300">
-              {role.summary}
+          <div className="md:col-span-9">
+            <h3 className="display text-3xl md:text-5xl">{role.title}</h3>
+            <p className="mt-2 text-silver">
+              {role.org}
+              {role.location ? (
+                <span className="text-mute"> · {role.location}</span>
+              ) : null}
             </p>
-          ) : null}
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-zinc-600 dark:text-zinc-400">
-            {role.bullets.map((b) => (
-              <li key={b}>{b}</li>
-            ))}
-          </ul>
+            {role.summary ? (
+              <p className="mt-5 max-w-3xl leading-relaxed text-bone">
+                {role.summary}
+              </p>
+            ) : null}
+            <ul className="mt-5 space-y-2 text-sm text-silver">
+              {role.bullets.map((b) => (
+                <li key={b} className="flex gap-3">
+                  <span className="mt-2 h-px w-4 shrink-0 bg-crimson" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
         </li>
       ))}
     </ol>
@@ -35,28 +44,32 @@ function Timeline({ roles }: { roles: Role[] }) {
 export function Experience({ dict }: { dict: Dictionary }) {
   const { experience } = dict;
   return (
-    <Section id="experience" title={experience.title}>
-      <Timeline roles={experience.roles} />
+    <Section
+      id="experience"
+      index="05"
+      label={experience.title}
+      title={experience.title}
+    >
+      <RoleList roles={experience.roles} />
 
-      <h3 className="mb-8 mt-16 text-xl font-semibold">
+      <h3 data-reveal className="display mb-8 mt-24 text-4xl md:text-5xl">
         {experience.complementaryTitle}
       </h3>
-      <Timeline roles={experience.complementary} />
+      <RoleList roles={experience.complementary} />
 
-      <h3 className="mb-6 mt-16 text-xl font-semibold">
+      <h3 data-reveal className="display mb-8 mt-24 text-4xl md:text-5xl">
         {experience.educationTitle}
       </h3>
-      <ul className="grid gap-4 md:grid-cols-3">
+      <ul className="grid border-l border-t border-line md:grid-cols-3">
         {experience.education.map((edu) => (
           <li
             key={edu.id}
-            className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-800"
+            data-reveal
+            className="border-b border-r border-line p-6"
           >
-            <p className="font-mono text-sm text-zinc-500">{edu.period}</p>
-            <p className="mt-1 font-medium">{edu.degree}</p>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              {edu.school}
-            </p>
+            <p className="label text-crimson-bright">{edu.period}</p>
+            <p className="mt-4 text-lg font-medium leading-snug">{edu.degree}</p>
+            <p className="mt-1 text-sm text-silver">{edu.school}</p>
           </li>
         ))}
       </ul>

@@ -3,62 +3,87 @@ import { site } from "@/content/site";
 import type { Locale } from "@/i18n";
 
 export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+  const { hero } = dict;
+  const [first, ...rest] = site.name.split(" ");
+
   return (
     <section
       id="top"
       data-section="hero"
-      className="relative flex min-h-screen items-center pt-16"
+      className="relative flex min-h-svh flex-col justify-end overflow-hidden pb-10 pt-28 md:pb-14"
     >
-      {/* Reserved for the animated background (nodes / workflow motif). */}
+      {/* Deep burgundy wash fading to black, bottom-right */}
       <div
-        data-anim="hero-bg"
         aria-hidden
-        className="absolute inset-x-6 bottom-6 top-24 -z-10 rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-800"
+        className="pointer-events-none absolute -right-1/4 top-0 h-full w-3/4 bg-[radial-gradient(ellipse_at_70%_30%,var(--color-burgundy)_0%,transparent_65%)] opacity-60"
       />
 
-      <div className="mx-auto w-full max-w-6xl px-6">
-        <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          {dict.hero.greeting}
-        </p>
-        <h1
-          data-anim="hero-title"
-          className="mt-2 text-5xl font-semibold tracking-tight sm:text-7xl"
+      <div className="relative mx-auto w-full max-w-[1400px] px-6 md:px-10">
+        <p
+          data-hero-fade
+          className="label mb-6 flex items-center gap-3 text-silver md:mb-10"
         >
-          {site.name}
-        </h1>
-        <p className="mt-4 text-xl text-zinc-700 dark:text-zinc-300">
-          {dict.hero.role}
-        </p>
-        <p className="mt-6 max-w-2xl text-zinc-600 dark:text-zinc-400">
-          {dict.hero.tagline}
+          <span className="inline-block h-px w-10 bg-crimson" />
+          {hero.kicker}
         </p>
 
-        <div className="mt-10 flex flex-wrap gap-3">
-          <a
-            href="#work"
-            className="rounded bg-foreground px-5 py-3 font-medium text-background"
+        <div className="relative flex flex-col lg:block">
+          {/* Portrait placeholder — swap for a real photo later */}
+          <div
+            data-hero-fade
+            className="relative order-2 mt-8 aspect-[4/5] w-2/3 max-w-xs overflow-hidden rounded-[2px] border border-line bg-gradient-to-b from-charcoal via-oxblood to-coal sm:w-1/2 lg:absolute lg:right-0 lg:top-0 lg:mt-0 lg:w-[28%] lg:max-w-none"
           >
-            {dict.hero.ctaWork}
-          </a>
-          <a
-            href={site.cv[lang]}
-            download
-            className="rounded border border-zinc-300 px-5 py-3 font-medium dark:border-zinc-700"
+            <span className="label absolute left-4 top-4 text-mute">
+              {hero.photoPending}
+            </span>
+            <span className="absolute right-4 top-4 size-3 rounded-full border border-crimson" />
+          </div>
+
+          <h1 className="display relative z-10 order-1 text-[clamp(4.25rem,23vw,21rem)] leading-[0.86] tracking-[-0.01em] lg:text-[clamp(4.25rem,19vw,21rem)]">
+            <span data-line>
+              <span>{first}</span>
+            </span>
+            <span data-line className="text-crimson">
+              <span>{rest.join(" ")}</span>
+            </span>
+          </h1>
+        </div>
+
+        <div className="mt-12 grid gap-8 border-t border-line pt-6 md:mt-16 lg:grid-cols-12">
+          <div data-hero-fade className="lg:col-span-3">
+            <p className="label text-mute">{hero.currentLabel}</p>
+            <p className="mt-2 text-sm text-bone">{hero.currentValue}</p>
+            <p className="label mt-6 text-mute">{hero.basedLabel}</p>
+            <p className="mt-2 text-sm text-bone">{site.location}</p>
+          </div>
+
+          <p
+            data-hero-fade
+            className="max-w-xl text-base leading-relaxed text-silver lg:col-span-5"
           >
-            {dict.hero.ctaCv}
-          </a>
-          <a
-            href="#contact"
-            className="rounded px-5 py-3 font-medium text-zinc-600 underline-offset-4 hover:underline dark:text-zinc-400"
+            {hero.tagline}
+          </p>
+
+          <div
+            data-hero-fade
+            className="flex flex-wrap items-start gap-3 lg:col-span-4 lg:justify-end"
           >
-            {dict.hero.ctaContact}
-          </a>
+            <a
+              href="#work"
+              className="label rounded-[2px] bg-crimson px-6 py-4 text-paper transition-colors hover:bg-crimson-bright"
+            >
+              {hero.ctaWork}
+            </a>
+            <a
+              href={site.cv[lang]}
+              download
+              className="label rounded-[2px] border border-line px-6 py-4 text-paper transition-colors hover:border-crimson"
+            >
+              {hero.ctaCv}
+            </a>
+          </div>
         </div>
       </div>
-
-      <span className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs uppercase tracking-widest text-zinc-500">
-        {dict.hero.scroll}
-      </span>
     </section>
   );
 }
