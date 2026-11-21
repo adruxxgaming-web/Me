@@ -18,8 +18,9 @@ export interface Certification {
 }
 
 /** Issuer logos in /public. Issuers without one get a monogram. */
-export const issuerLogos: Record<string, { src: string; bg?: "white" }> = {
+export const issuerLogos: Record<string, { src: string; bg?: "white"; svg?: boolean }> = {
   Platzi: { src: "/images/issuers/platzi.webp" },
+  Anthropic: { src: "/images/issuers/anthropic.svg", svg: true },
   edX: { src: "/images/issuers/edx.png", bg: "white" },
 };
 

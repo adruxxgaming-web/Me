@@ -36,6 +36,7 @@ function IssuerMark({ issuer, size }: { issuer: string; size: number }) {
         width={size}
         height={size}
         style={box}
+        unoptimized={logo.svg}
         className={
           logo.bg === "white"
             ? "shrink-0 rounded-[3px] bg-white object-contain"
