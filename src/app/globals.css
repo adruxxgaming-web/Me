@@ -133,16 +133,18 @@ body::after {
 
 /* ───────────── Personal page theme (.craft) ─────────────
    Warm cream surfaces, grass-green accents, pixel headlines. Applied by
-   wrapping the page in .craft; body:has() flips the page background. */
-html:has(.craft) {
+   wrapping the page in .craft; body:has() flips the page background.
+   After a client-side navigation React keeps the previous page mounted but
+   hidden (inline display:none), so only a visible .craft counts. */
+html:has(.craft:not([style*="display: none"])) {
   background: var(--color-parchment);
   color-scheme: light;
 }
-body:has(.craft) {
+body:has(.craft:not([style*="display: none"])) {
   background: var(--color-parchment);
   color: var(--color-carbon);
 }
-body:has(.craft)::after {
+body:has(.craft:not([style*="display: none"]))::after {
   display: none;
 }
 .craft ::selection {

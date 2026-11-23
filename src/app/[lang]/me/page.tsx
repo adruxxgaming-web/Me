@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/i18n";
@@ -120,9 +121,9 @@ export default async function PersonalPage({
                 <a href="#social" className="btn-grass">
                   {personal.ctaPrimary}
                 </a>
-                <a href={`/${lang}`} className="btn-line">
+                <Link href={`/${lang}`} className="btn-line">
                   <span aria-hidden>←</span> {personal.back}
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -132,7 +133,7 @@ export default async function PersonalPage({
             className="relative mt-10 aspect-[4/5] overflow-hidden rounded-[28px] border border-[#e9dfd1] bg-carbon shadow-[0_30px_60px_-36px_rgb(41_41_41/0.45)] sm:aspect-[4/3] md:rounded-[32px] lg:aspect-[16/9]"
           >
             <Image
-              src="/images/adrian-sunset.png"
+              src="/images/adrian-sunset.webp"
               alt={personal.sceneLabel}
               fill
               priority
@@ -279,9 +280,9 @@ export default async function PersonalPage({
               {personal.closingText}
             </p>
             <div className="mt-8">
-              <a href={`/${lang}`} className="btn-grass">
+              <Link href={`/${lang}`} className="btn-grass">
                 {personal.back}
-              </a>
+              </Link>
             </div>
             {/* grass-and-dirt strip */}
             <div aria-hidden className="absolute inset-x-0 bottom-0">

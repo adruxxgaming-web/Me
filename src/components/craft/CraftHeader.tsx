@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Dictionary } from "@/content/types";
 import type { Locale } from "@/i18n";
 
@@ -27,13 +28,13 @@ export function CraftHeader({
         aria-label="Main"
         className="mx-auto flex h-14 max-w-[1200px] items-center justify-between gap-4 rounded-[18px] border border-[#e9dfd1] bg-ivory/95 pl-4 pr-2 shadow-[0_14px_30px_-22px_rgb(41_41_41/0.4)]"
       >
-        <a
+        <Link
           href={`/${lang}/me`}
           aria-label={name}
           className="pixel text-sm text-carbon"
         >
           AH<span className="text-grass">_</span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
@@ -49,7 +50,7 @@ export function CraftHeader({
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
+          <Link
             href={`/${other}/me`}
             hrefLang={other}
             lang={other}
@@ -57,10 +58,10 @@ export function CraftHeader({
             className="rounded-[12px] px-3 py-2 text-sm font-semibold text-slate transition-colors hover:bg-cream hover:text-carbon"
           >
             {switchTo}
-          </a>
-          <a href={`/${lang}`} className="btn-line !px-4 !py-2.5 !text-sm">
+          </Link>
+          <Link href={`/${lang}`} className="btn-line !px-4 !py-2.5 !text-sm">
             <span aria-hidden>←</span> {nav.portfolio}
-          </a>
+          </Link>
         </div>
       </nav>
     </header>

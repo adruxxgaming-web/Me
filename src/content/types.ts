@@ -38,7 +38,6 @@ export interface Dictionary {
   };
   hero: {
     kicker: string;
-    tags: string[];
     tagline: string;
     currentLabel: string;
     currentValue: string;
@@ -46,8 +45,6 @@ export interface Dictionary {
     photoPending: string;
     ctaWork: string;
     ctaCv: string;
-    ctaContact: string;
-    scroll: string;
   };
   stats: { items: { value: number; suffix: string; label: string }[] };
   about: {

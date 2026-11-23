@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Dictionary } from "@/content/types";
 import { site } from "@/content/site";
 import type { Locale } from "@/i18n";
@@ -65,7 +66,7 @@ export function Contact({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 </li>
               ))}
               <li className="border-b border-line">
-                <a
+                <Link
                   href={`/${lang}/me`}
                   className="group flex items-center justify-between gap-4 py-5"
                 >
@@ -75,7 +76,7 @@ export function Contact({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   <span className="label shrink-0 text-crimson-bright transition-transform group-hover:translate-x-1">
                     {contact.personalLink} →
                   </span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

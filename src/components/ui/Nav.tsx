@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/content/types";
@@ -51,13 +52,13 @@ export function Nav({
         aria-label="Main"
         className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-6 md:px-10"
       >
-        <a
+        <Link
           href={home}
           className="display text-2xl tracking-normal"
           aria-label={name}
         >
           AH<span className="text-crimson">.</span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
@@ -71,17 +72,17 @@ export function Nav({
             </li>
           ))}
           <li>
-            <a
+            <Link
               href={`${home}/me`}
               className="label text-crimson-bright transition-colors hover:text-paper"
             >
               {labels.personal} ↗
-            </a>
+            </Link>
           </li>
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
+          <Link
             href={`/${other}`}
             hrefLang={other}
             lang={other}
@@ -89,7 +90,7 @@ export function Nav({
             className="label rounded-[2px] border border-line px-3 py-2 text-silver transition-colors hover:border-crimson hover:text-paper"
           >
             {labels.switchTo}
-          </a>
+          </Link>
           <a
             href={cvHref}
             download
@@ -127,12 +128,12 @@ export function Nav({
               </li>
             ))}
             <li className="border-b border-line">
-              <a
+              <Link
                 href={`${home}/me`}
                 className="display block py-5 text-5xl text-crimson"
               >
                 {labels.personal} ↗
-              </a>
+              </Link>
             </li>
           </ul>
           <a

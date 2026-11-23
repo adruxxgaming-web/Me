@@ -22,7 +22,6 @@ export const es: Dictionary = {
   },
   hero: {
     kicker: "Ingeniero de Soluciones Tecnológicas",
-    tags: ["IA y Automatización", "Líder de Proyectos", "Transformación Digital"],
     tagline:
       "Convierto problemas de negocio en sistemas digitales estructurados, escalables y útiles: flujos de automatización, procesos asistidos por IA y herramientas que ayudan a los equipos a trabajar con más claridad y rapidez.",
     currentLabel: "Actualmente",
@@ -31,8 +30,6 @@ export const es: Dictionary = {
     photoPending: "Foto — pendiente",
     ctaWork: "Ver mi trabajo",
     ctaCv: "Descargar CV",
-    ctaContact: "Contáctame",
-    scroll: "Desliza",
   },
   stats: {
     items: [

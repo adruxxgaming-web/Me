@@ -24,7 +24,6 @@ export const en: Dictionary = {
   },
   hero: {
     kicker: "Technology Solutions Engineer",
-    tags: ["AI & Automation", "Project Lead", "Digital Transformation"],
     tagline:
       "I turn business problems into structured, scalable and useful digital systems: automation workflows, AI-assisted processes and tools that help teams work with more clarity and speed.",
     currentLabel: "Currently",
@@ -33,8 +32,6 @@ export const en: Dictionary = {
     photoPending: "Photo — pending",
     ctaWork: "See my work",
     ctaCv: "Download CV",
-    ctaContact: "Get in touch",
-    scroll: "Scroll",
   },
   stats: {
     items: [
