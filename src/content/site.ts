@@ -42,5 +42,12 @@ export const site = {
       handle: "@Ing_adru",
       url: "https://www.youtube.com/@Ing_adru",
     },
+    {
+      id: "tiktok",
+      professional: false,
+      label: "TikTok",
+      handle: "@adrian.hinojosag15",
+      url: "https://www.tiktok.com/@adrian.hinojosag15",
+    },
   ],
 } as const;

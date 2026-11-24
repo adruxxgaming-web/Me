@@ -26,6 +26,9 @@ const paths = {
       <path d="m10 15 5-3-5-3z" />
     </>
   ),
+  tiktok: (
+    <path d="M9 12a4 4 0 1 0 4 4V3c.5 2.6 2.6 4.6 5.2 5" />
+  ),
   briefcase: (
     <>
       <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale, type Locale } from "@/i18n";
+import { getDictionary, hasLocale } from "@/i18n";
 import { site } from "@/content/site";
 import { Animations } from "@/components/motion/Animations";
 import { LinkIcon, type LinkIconName } from "@/components/ui/LinkIcon";
@@ -113,7 +113,6 @@ export default async function LinksPage({
   if (!hasLocale(lang)) notFound();
   const dict = getDictionary(lang);
   const { links } = dict;
-  const other: Locale = lang === "en" ? "es" : "en";
 
   return (
     <div className="relative min-h-svh overflow-hidden">
@@ -123,7 +122,42 @@ export default async function LinksPage({
         className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(ellipse_at_50%_0%,var(--color-burgundy)_0%,transparent_70%)] opacity-70"
       />
 
-      <main className="relative mx-auto flex min-h-svh w-full max-w-md flex-col px-5 pb-10 pt-14 sm:pt-20">
+      {/* Language switch, top-right: the active language sits on the thumb. */}
+      <nav
+        aria-label={lang === "es" ? "Idioma" : "Language"}
+        className="absolute right-4 top-4 z-20 sm:right-6 sm:top-6"
+      >
+        <div className="relative grid grid-cols-2 rounded-full border border-line bg-charcoal p-1">
+          <span
+            aria-hidden
+            className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-paper transition-transform duration-300 ${lang === "en" ? "translate-x-full" : ""}`}
+          />
+          {(["es", "en"] as const).map((code) =>
+            code === lang ? (
+              <span
+                key={code}
+                aria-current="true"
+                className="display relative px-4 py-1.5 text-center text-lg text-ink"
+              >
+                {code.toUpperCase()}
+              </span>
+            ) : (
+              <Link
+                key={code}
+                href={`/${code}/links`}
+                hrefLang={code}
+                lang={code}
+                aria-label={dict.nav.switchToLabel}
+                className="display relative px-4 py-1.5 text-center text-lg text-mute transition-colors hover:text-paper"
+              >
+                {code.toUpperCase()}
+              </Link>
+            ),
+          )}
+        </div>
+      </nav>
+
+      <main className="relative mx-auto flex min-h-svh w-full max-w-md flex-col px-5 pb-10 pt-20 sm:pt-24">
         {/* ── Header ── */}
         <header className="flex flex-col items-center text-center">
           <div
@@ -152,9 +186,6 @@ export default async function LinksPage({
             className="mt-4 max-w-xs text-sm leading-relaxed text-silver"
           >
             {links.tagline}
-          </p>
-          <p data-hero-fade className="label mt-3 text-mute">
-            {site.location}
           </p>
         </header>
 
@@ -196,7 +227,11 @@ export default async function LinksPage({
           </p>
           <ul className="mt-3 grid grid-cols-2 gap-3">
             {site.socials.map((social) => (
-              <li key={social.id} data-hero-fade>
+              <li
+                key={social.id}
+                data-hero-fade
+                className="last:odd:col-span-2"
+              >
                 <a
                   href={social.url}
                   target="_blank"
@@ -240,20 +275,9 @@ export default async function LinksPage({
             <span className="sr-only">{links.emailLabel}: </span>
             {site.email}
           </a>
-          <div className="flex items-center gap-4">
-            <Link
-              href={`/${other}/links`}
-              hrefLang={other}
-              lang={other}
-              aria-label={dict.nav.switchToLabel}
-              className="label rounded-[2px] border border-line px-3 py-2 text-silver transition-colors hover:border-crimson hover:text-paper"
-            >
-              {dict.nav.switchTo}
-            </Link>
-            <span className="display text-xl" aria-hidden>
-              AH<span className="text-crimson">.</span>
-            </span>
-          </div>
+          <span className="display text-xl" aria-hidden>
+            AH<span className="text-crimson">.</span>
+          </span>
         </footer>
       </main>
 

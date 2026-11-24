@@ -240,7 +240,7 @@ export default async function PersonalPage({
           </div>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2">
             {site.socials.map((social) => (
-              <li key={social.id} data-reveal>
+              <li key={social.id} data-reveal className="last:odd:sm:col-span-2">
                 <a
                   href={social.url}
                   target="_blank"
