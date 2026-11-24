@@ -3,7 +3,6 @@ export const site = {
   name: "Adrián Hinojosa",
   fullName: "Adrián Hinojosa Gutierrez",
   email: "adrian.hinojosa@sotesa.mx",
-  location: "Monterrey, Nuevo León, México",
   // Production URL (used for metadata / hreflang). Update if a custom domain is added.
   url: "https://adrianportfolio-blush.vercel.app",
   // Every certification (with its credential link) is listed here.

@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { SKIP_INTRO_ID } from "@/components/ui/LanguageSwitch";
 
 /**
  * Declarative page animations driven by data attributes, so sections can stay
@@ -21,35 +22,45 @@ export function Animations() {
 
   useEffect(() => {
     const mm = gsap.matchMedia();
+    // Set by <LanguageSwitch>: the view transition already animates the
+    // change, so show the new page as-is instead of replaying the intro.
+    const skipStyle = document.getElementById(SKIP_INTRO_ID);
+    const skipIntro = skipStyle !== null;
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      // fromTo (with explicit y) so GSAP never inherits the CSS starting
-      // transform as a pixel offset.
-      gsap.fromTo(
-        "[data-line] > span",
-        { yPercent: 110, y: 0 },
-        {
-          yPercent: 0,
-          y: 0,
-          duration: 1.1,
-          ease: "power4.out",
-          stagger: 0.12,
-          delay: 0.1,
-        },
-      );
+      if (skipIntro) {
+        // Pin the final state inline; the override <style> is dropped below.
+        gsap.set("[data-line] > span", { yPercent: 0, y: 0 });
+        gsap.set("[data-hero-fade]", { opacity: 1, y: 0 });
+      } else {
+        // fromTo (with explicit y) so GSAP never inherits the CSS starting
+        // transform as a pixel offset.
+        gsap.fromTo(
+          "[data-line] > span",
+          { yPercent: 110, y: 0 },
+          {
+            yPercent: 0,
+            y: 0,
+            duration: 1.1,
+            ease: "power4.out",
+            stagger: 0.12,
+            delay: 0.1,
+          },
+        );
 
-      gsap.fromTo(
-        "[data-hero-fade]",
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: 0.08,
-          delay: 0.55,
-        },
-      );
+        gsap.fromTo(
+          "[data-hero-fade]",
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            stagger: 0.08,
+            delay: 0.55,
+          },
+        );
+      }
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.fromTo(
@@ -82,6 +93,12 @@ export function Animations() {
       });
     });
 
+    // Drop the override a moment later rather than right away: effects can
+    // run twice (Strict Mode) and the second run must still see it.
+    const clearSkip = skipIntro
+      ? window.setTimeout(() => skipStyle.remove(), 800)
+      : undefined;
+
     // Layout can shift once fonts/images settle.
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);
@@ -90,6 +107,7 @@ export function Animations() {
     document.addEventListener("toggle", refresh, true);
 
     return () => {
+      window.clearTimeout(clearSkip);
       window.removeEventListener("load", refresh);
       document.removeEventListener("toggle", refresh, true);
       mm.revert();

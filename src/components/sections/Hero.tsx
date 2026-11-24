@@ -53,8 +53,6 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <div data-hero-fade className="lg:col-span-3">
             <p className="label text-mute">{hero.currentLabel}</p>
             <p className="mt-2 text-sm text-bone">{hero.currentValue}</p>
-            <p className="label mt-6 text-mute">{hero.basedLabel}</p>
-            <p className="mt-2 text-sm text-bone">{site.location}</p>
           </div>
 
           <p

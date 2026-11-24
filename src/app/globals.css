@@ -122,6 +122,38 @@ body::after {
   }
 }
 
+/* ───────────── Language-switch view transition ─────────────
+   Page content crossfades with a soft blur; the switch thumb slides. */
+:root:active-view-transition-type(lang-switch)::view-transition-old(root) {
+  animation: 220ms ease-out both lang-fade-out;
+}
+:root:active-view-transition-type(lang-switch)::view-transition-new(root) {
+  animation: 320ms ease-out 80ms both lang-fade-in;
+}
+::view-transition-group(.lang-thumb) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes lang-fade-out {
+  to {
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+@keyframes lang-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 /* Mask used for line-by-line display reveals */
 [data-line] {
   display: block;

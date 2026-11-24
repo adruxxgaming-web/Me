@@ -26,7 +26,6 @@ export const es: Dictionary = {
       "Convierto problemas de negocio en sistemas digitales estructurados, escalables y útiles: flujos de automatización, procesos asistidos por IA y herramientas que ayudan a los equipos a trabajar con más claridad y rapidez.",
     currentLabel: "Actualmente",
     currentValue: "Ingeniero de Soluciones Tecnológicas en STT",
-    basedLabel: "Ubicación",
     photoPending: "Foto — pendiente",
     ctaWork: "Ver mi trabajo",
     ctaCv: "Descargar CV",

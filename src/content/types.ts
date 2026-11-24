@@ -48,7 +48,6 @@ export interface Dictionary {
     tagline: string;
     currentLabel: string;
     currentValue: string;
-    basedLabel: string;
     photoPending: string;
     ctaWork: string;
     ctaCv: string;

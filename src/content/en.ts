@@ -28,7 +28,6 @@ export const en: Dictionary = {
       "I turn business problems into structured, scalable and useful digital systems: automation workflows, AI-assisted processes and tools that help teams work with more clarity and speed.",
     currentLabel: "Currently",
     currentValue: "Technology Solutions Engineer at STT",
-    basedLabel: "Based in",
     photoPending: "Photo — pending",
     ctaWork: "See my work",
     ctaCv: "Download CV",
