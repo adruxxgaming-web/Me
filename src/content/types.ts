@@ -135,5 +135,16 @@ export interface Dictionary {
     closingText: string;
     back: string;
   };
-  footer: { rights: string; builtWith: string };
+  /** Link-in-bio page (/[lang]/links). */
+  links: {
+    meta: { title: string; description: string };
+    avatarAlt: string;
+    tagline: string;
+    portfolio: { label: string; hint: string };
+    personal: { label: string; hint: string };
+    cv: { label: string; hint: string };
+    socialsTitle: string;
+    emailLabel: string;
+  };
+  footer: { rights: string; links: string };
 }

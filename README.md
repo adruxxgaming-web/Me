@@ -4,6 +4,7 @@ Bilingual (EN/ES) portfolio with two pages:
 
 - **`/[lang]`** — professional page (dark editorial style: black, crimson, off-white; Anton + Inter).
 - **`/[lang]/me`** — personal page (bright Minecraft-inspired style: cream, grass green, pixel headlines).
+- **`/[lang]/links`** — link-in-bio page for social profiles (portfolio, personal page, CV and socials). Share `/links`: it redirects to the visitor's language.
 
 **Stack:** Next.js 16 (App Router, Cache Components) · TypeScript · Tailwind CSS 4 · GSAP + ScrollTrigger · Lenis · deployed on Vercel.
 
@@ -29,7 +30,7 @@ src/
 │  ├─ en.ts / es.ts         translatable text, projects, experience, personal page copy
 │  ├─ certifications.ts     all certifications (shared by both languages) + issuer logos
 │  └─ site.ts               non-translated data: email, socials, CV paths
-├─ app/[lang]/              layout.tsx (fonts, metadata) · page.tsx (professional) · me/page.tsx (personal)
+├─ app/[lang]/              layout.tsx (fonts, metadata) · page.tsx (professional) · me/page.tsx (personal) · links/page.tsx (link-in-bio)
 ├─ components/
 │  ├─ sections/             Hero, Marquee, About, Stats, Work, Skills, Certifications, Experience, Contact, Footer
 │  ├─ ui/                   Nav, Section, Chip

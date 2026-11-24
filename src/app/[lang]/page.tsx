@@ -45,7 +45,7 @@ export default async function HomePage({
             hydrated; animating server HTML earlier causes hydration mismatches. */}
         <Animations />
       </main>
-      <Footer dict={dict} />
+      <Footer lang={lang} dict={dict} />
     </>
   );
 }

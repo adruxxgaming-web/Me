@@ -294,11 +294,13 @@ export default async function PersonalPage({
       </main>
 
       <footer className="border-t border-[#e9dfd1] py-8">
-        <div className="mx-auto flex max-w-[1200px] flex-col justify-between gap-2 px-5 text-sm text-slate md:flex-row md:px-8">
+        <div className="mx-auto flex max-w-[1200px] flex-col justify-between gap-4 px-5 text-sm text-slate md:flex-row md:items-center md:px-8">
           <p>
             © {site.fullName}. {dict.footer.rights}
           </p>
-          <p>{dict.footer.builtWith}</p>
+          <Link href={`/${lang}/links`} className="btn-line self-start !px-4 !py-2 !text-sm">
+            {dict.footer.links} →
+          </Link>
         </div>
       </footer>
 

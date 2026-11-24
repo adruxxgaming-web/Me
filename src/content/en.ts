@@ -415,8 +415,22 @@ export const en: Dictionary = {
     closingText: "Projects, experience and certifications are one click away.",
     back: "Back to portfolio",
   },
+  links: {
+    meta: {
+      title: "Adrián Hinojosa — Links",
+      description:
+        "Portfolio, CV and social profiles of Adrián Hinojosa, Technology Solutions Engineer.",
+    },
+    avatarAlt: "Adrián as a block-style character with a laptop and his beagle",
+    tagline: "AI, automation and technology projects that make teams work better.",
+    portfolio: { label: "Professional portfolio", hint: "Projects, experience & certifications" },
+    personal: { label: "Beyond work", hint: "Games, sports and the person behind the work" },
+    cv: { label: "Download CV", hint: "PDF · English" },
+    socialsTitle: "Find me on",
+    emailLabel: "Email",
+  },
   footer: {
     rights: "All rights reserved.",
-    builtWith: "Built with Next.js, GSAP and Lenis.",
+    links: "Links",
   },
 };

@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 import { locales } from "@/i18n";
 
 // Every page exists once per locale; each entry lists its translations.
-const paths = ["", "/me"];
+const paths = ["", "/me", "/links"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return paths.flatMap((path) =>
