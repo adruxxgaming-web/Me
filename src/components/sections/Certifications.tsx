@@ -3,6 +3,7 @@ import type { Dictionary } from "@/content/types";
 import type { Locale } from "@/i18n";
 import { certifications, issuerLogos } from "@/content/certifications";
 import { Section } from "@/components/ui/Section";
+import { ToggleIcon } from "@/components/ui/ToggleIcon";
 import { site } from "@/content/site";
 
 const MONTHS = {
@@ -140,12 +141,7 @@ export function Certifications({
           <span className="label inline-flex items-center gap-3 text-crimson-bright">
             <span className="group-open:hidden">{t.showMore}</span>
             <span className="hidden group-open:inline">{t.showLess}</span>
-            <span
-              aria-hidden
-              className="flex size-8 items-center justify-center rounded-full border border-crimson text-base transition-transform duration-300 group-open:rotate-45"
-            >
-              +
-            </span>
+            <ToggleIcon />
           </span>
         </summary>
         <ul className="grid md:grid-cols-2 md:gap-x-10 xl:grid-cols-3">

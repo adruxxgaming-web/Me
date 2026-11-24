@@ -1,5 +1,6 @@
 import type { Dictionary } from "@/content/types";
 import { Chip, Section } from "@/components/ui/Section";
+import { ToggleIcon } from "@/components/ui/ToggleIcon";
 
 export function Work({ dict }: { dict: Dictionary }) {
   const { work } = dict;
@@ -42,12 +43,7 @@ export function Work({ dict }: { dict: Dictionary }) {
                     </div>
                   </div>
                   <span className="label inline-flex items-center gap-3 text-crimson-bright">
-                    <span
-                      aria-hidden
-                      className="flex size-8 items-center justify-center rounded-full border border-crimson text-base transition-transform duration-300 group-open:rotate-45"
-                    >
-                      +
-                    </span>
+                    <ToggleIcon />
                     {work.openCase}
                   </span>
                 </div>
