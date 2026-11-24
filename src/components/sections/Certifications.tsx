@@ -65,12 +65,13 @@ export function Certifications({
   dict: Dictionary;
 }) {
   const t = dict.certifications;
-  // Newest first; entries without a date sink to the end.
-  const sorted = [...certifications].sort((a, b) =>
-    (b.date ?? "").localeCompare(a.date ?? ""),
-  );
-  const featured = sorted.filter((c) => c.featured);
-  const rest = sorted.filter((c) => !c.featured);
+  // Top 9 in their ranked order; everything else newest first (undated last).
+  const top = certifications
+    .filter((c) => c.rank)
+    .sort((a, b) => (a.rank ?? 0) - (b.rank ?? 0));
+  const rest = certifications
+    .filter((c) => !c.rank)
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
 
   return (
     <Section
@@ -102,7 +103,7 @@ export function Certifications({
 
       <p className="label mt-12 text-mute">{t.highlightsTitle}</p>
       <ul className="mt-4 grid border-l border-t border-line sm:grid-cols-2 xl:grid-cols-3">
-        {featured.map((cert, i) => (
+        {top.map((cert, i) => (
           <li
             key={cert.id}
             data-reveal
@@ -124,45 +125,46 @@ export function Certifications({
                 {cert.expires
                   ? ` · ${t.expiresLabel} ${formatDate(cert.expires, lang)}`
                   : null}
-                {cert.url ? (
-                  <>
-                    {" · "}
-                    <a
-                      href={cert.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-crimson-bright underline underline-offset-4"
-                    >
-                      {t.viewCredential}
-                    </a>
-                  </>
-                ) : null}
               </p>
             </div>
           </li>
         ))}
       </ul>
 
-      <p className="label mt-16 text-mute">
-        {t.moreTitle} · {rest.length}
-      </p>
-      <ul className="mt-4 grid border-t border-line md:grid-cols-2 md:gap-x-10 xl:grid-cols-3">
-        {rest.map((cert) => (
-          <li
-            key={cert.id}
-            data-reveal
-            className="flex items-center gap-3 border-b border-line py-3"
-          >
-            <IssuerMark issuer={cert.issuer} size={24} />
-            <span className="min-w-0 flex-1 text-sm leading-snug text-bone">
-              {cert.name}
+      {/* The remaining courses stay collapsed until asked for. */}
+      <details data-reveal className="group mt-12">
+        <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-4 border-y border-line py-5 transition-colors hover:bg-graphite md:px-4 [&::-webkit-details-marker]:hidden">
+          <span className="label text-silver">
+            {t.moreTitle} · {rest.length}
+          </span>
+          <span className="label inline-flex items-center gap-3 text-crimson-bright">
+            <span className="group-open:hidden">{t.showMore}</span>
+            <span className="hidden group-open:inline">{t.showLess}</span>
+            <span
+              aria-hidden
+              className="flex size-8 items-center justify-center rounded-full border border-crimson text-base transition-transform duration-300 group-open:rotate-45"
+            >
+              +
             </span>
-            <span className="label shrink-0 text-mute">
-              {cert.date ? formatDate(cert.date, lang) : t.pendingLabel}
-            </span>
-          </li>
-        ))}
-      </ul>
+          </span>
+        </summary>
+        <ul className="grid md:grid-cols-2 md:gap-x-10 xl:grid-cols-3">
+          {rest.map((cert) => (
+            <li
+              key={cert.id}
+              className="flex items-center gap-3 border-b border-line py-3"
+            >
+              <IssuerMark issuer={cert.issuer} size={24} />
+              <span className="min-w-0 flex-1 text-sm leading-snug text-bone">
+                {cert.name}
+              </span>
+              <span className="label shrink-0 text-mute">
+                {cert.date ? formatDate(cert.date, lang) : t.pendingLabel}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </details>
     </Section>
   );
 }

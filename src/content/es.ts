@@ -229,11 +229,12 @@ export const es: Dictionary = {
     title: "Certificaciones",
     intro: "Aprendizaje continuo en IA, agilidad, datos y gestión de proyectos.",
     pendingLabel: "Fecha pendiente",
-    viewCredential: "Ver credencial",
     linkedinCta: "Ver todas las credenciales en LinkedIn",
     totalLabel: "certificaciones y cursos",
     highlightsTitle: "Destacadas",
     moreTitle: "Más cursos",
+    showMore: "Ver todos los cursos",
+    showLess: "Ocultar cursos",
     expiresLabel: "Vence",
   },
   experience: {

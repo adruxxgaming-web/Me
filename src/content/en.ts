@@ -231,11 +231,12 @@ export const en: Dictionary = {
     title: "Certifications",
     intro: "Continuous learning in AI, agile, data and project management.",
     pendingLabel: "Date pending",
-    viewCredential: "View credential",
     linkedinCta: "See all credentials on LinkedIn",
     totalLabel: "certifications & courses",
     highlightsTitle: "Highlights",
     moreTitle: "More courses",
+    showMore: "Show all courses",
+    showLess: "Hide courses",
     expiresLabel: "Expires",
   },
   experience: {

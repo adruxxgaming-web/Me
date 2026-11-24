@@ -11,10 +11,9 @@ export interface Certification {
   expires?: string;
   /** Issuer credential ID; not shown on the page. */
   credentialId?: string;
-  /** Public verification link. null = only verifiable via LinkedIn. */
-  url: string | null;
-  /** Shown as a large card; the rest go in the compact list. */
-  featured?: boolean;
+  /** 1–9: position among the top certifications shown as cards. The rest
+   *  go in the collapsible list. Links to every credential live on LinkedIn. */
+  rank?: number;
 }
 
 /** Issuer logos in /public. Issuers without one get a monogram. */
@@ -29,99 +28,88 @@ const platzi = (
   name: string,
   date: string,
   credentialId: string,
-  featured = false,
+  rank?: number,
 ): Certification => ({
   id,
   name,
   issuer: "Platzi",
   date,
   credentialId,
-  url: null,
-  featured,
+  rank,
 });
 
 export const certifications: Certification[] = [
-  // ── Highlights ──
+  // ── Main certifications (top 9 ranked with `rank`) ──
   {
     id: "anthropic-ai-fluency",
+    rank: 2,
     name: "AI Fluency for Small Businesses",
     issuer: "Anthropic",
     date: "2026-07",
     credentialId: "6zwm87sius4q",
-    url: "https://verify.skilljar.com/c/6zwm87sius4q",
-    featured: true,
   },
   {
     id: "anthropic-claude-code-101",
+    rank: 1,
     name: "Claude Code 101",
     issuer: "Anthropic",
     date: "2026-07",
     credentialId: "x7ybyom62y2p",
-    url: "https://verify.skilljar.com/c/x7ybyom62y2p",
-    featured: true,
   },
   {
     id: "huawei-sales-ip",
+    rank: 3,
     name: "Huawei Certified Specialist Associate – Sales-IP Network",
     issuer: "Huawei",
     date: "2026-08",
     expires: "2028-08",
     credentialId: "033152101521810446851409",
-    url: null,
-    featured: true,
   },
   {
     id: "edx-entrepreneurial-mindset",
+    rank: 9,
     name: "The Entrepreneurial Mindset",
     issuer: "edX",
     date: "2025-07",
     credentialId: "b45569f3964f42c9a7d44930c3f674b3",
-    url: "https://courses.edx.org/certificates/b45569f3964f42c9a7d44930c3f674b3",
-    featured: true,
   },
   {
     id: "met-conecta",
+    rank: 8,
     name: "Consultor de Met Conecta",
     issuer: "Met Conecta",
     date: "2025-04",
     credentialId: "418cb318-fc15-4b32-9e5f-79a7d2b0499b",
-    url: null,
-    featured: true,
   },
-  platzi("scrum-master", "Scrum Master", "2026-07", "4e66ec7a-9feb-4602-a150-c08cc4e9b24a-f06550fd-04ed-457d-bc6d-d526e6d7a493", true),
-  platzi("claude-ai", "Curso de Claude AI", "2026-04", "1aab017b-08d9-45d3-bdd0-18f267c669f3-111814ed-eff7-42f2-9f99-e256569dd86a", true),
-  platzi("context-engineering", "Curso de Context Engineering", "2026-09", "a2d38af5-1611-4f94-9b62-463647a56089-b7fb991d-b2d7-4dc6-89cf-f2210ed301ae", true),
-  platzi("genai-adoption", "Adopción Profesional de AI Generativa", "2026-05", "f7a649ce-046d-4193-8505-cc89b8d36be4", true),
+  platzi("scrum-master", "Scrum Master", "2026-07", "4e66ec7a-9feb-4602-a150-c08cc4e9b24a-f06550fd-04ed-457d-bc6d-d526e6d7a493", 4),
+  platzi("claude-ai", "Curso de Claude AI", "2026-04", "1aab017b-08d9-45d3-bdd0-18f267c669f3-111814ed-eff7-42f2-9f99-e256569dd86a"),
+  platzi("context-engineering", "Curso de Context Engineering", "2026-09", "a2d38af5-1611-4f94-9b62-463647a56089-b7fb991d-b2d7-4dc6-89cf-f2210ed301ae", 6),
+  platzi("genai-adoption", "Adopción Profesional de AI Generativa", "2026-05", "f7a649ce-046d-4193-8505-cc89b8d36be4"),
   {
     id: "upv-project-management",
+    rank: 5,
     name: "Project Management",
     issuer: "Universitat Politècnica de València",
     date: null,
-    url: null,
-    featured: true,
   },
   {
     id: "umd-marketing",
     name: "Marketing Innovative Products and Services",
     issuer: "University System of Maryland",
     date: null,
-    url: null,
-    featured: true,
   },
   {
     id: "empower-powerbi",
+    rank: 7,
     name: "Power BI",
     issuer: "Empower Data",
     date: null,
-    url: null,
-    featured: true,
   },
   {
     id: "ibm-python",
     name: "Python Basics for Data Science",
     issuer: "IBM",
     date: null,
-    url: null,
   },
 
   // ── Platzi courses ──

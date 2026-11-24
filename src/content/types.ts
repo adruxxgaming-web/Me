@@ -83,11 +83,12 @@ export interface Dictionary {
     title: string;
     intro: string;
     pendingLabel: string;
-    viewCredential: string;
     linkedinCta: string;
     totalLabel: string;
     highlightsTitle: string;
     moreTitle: string;
+    showMore: string;
+    showLess: string;
     expiresLabel: string;
   };
   experience: {
