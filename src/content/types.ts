@@ -3,10 +3,17 @@ export interface Project {
   title: string;
   /** Short label for the kind of work, e.g. "SaaS concept". */
   type: string;
+  /** One-line pitch shown on the collapsed card. */
   summary: string;
-  focus: string[];
-  /** true while the real case-study summary is still to be written. */
-  draft: boolean;
+  /** The problem the case starts from. */
+  challenge: string;
+  /** How it was approached, step by step. */
+  approach: string[];
+  /** What the case produces. */
+  deliverables: string[];
+  tools: string[];
+  /** Courses / certifications whose knowledge the case applies. */
+  courses: string[];
   url: string | null;
 }
 
@@ -60,8 +67,12 @@ export interface Dictionary {
   work: {
     title: string;
     intro: string;
-    draftBadge: string;
-    focusLabel: string;
+    openCase: string;
+    challengeLabel: string;
+    approachLabel: string;
+    deliverablesLabel: string;
+    toolsLabel: string;
+    coursesLabel: string;
     projects: Project[];
   };
   skills: {
@@ -73,6 +84,7 @@ export interface Dictionary {
     intro: string;
     pendingLabel: string;
     viewCredential: string;
+    linkedinCta: string;
     totalLabel: string;
     highlightsTitle: string;
     moreTitle: string;

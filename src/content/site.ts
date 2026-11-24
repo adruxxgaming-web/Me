@@ -6,6 +6,9 @@ export const site = {
   location: "Monterrey, Nuevo León, México",
   // Production URL (used for metadata / hreflang). Update if a custom domain is added.
   url: "https://adrianportfolio-blush.vercel.app",
+  // Every certification (with its credential link) is listed here.
+  linkedinCertifications:
+    "https://www.linkedin.com/in/adri%C3%A1n-hinojosa-082548180/details/certifications/",
   cv: {
     en: "/cv/AdrianHinojosa_CV_EN.pdf",
     es: "/cv/AdrianHinojosa_CV_ES.pdf",

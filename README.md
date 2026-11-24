@@ -53,8 +53,9 @@ inside each page (after the content), never in the layout, so it runs after hydr
 ## Pending
 
 - [ ] Profile photo (hero of the professional page)
-- [ ] Project case-study summaries (`work.projects[*].draft`)
-- [ ] Credential links (`url`) and issuer logos for Huawei, Anthropic, Met Conecta, UPV, Maryland, Empower Data, IBM
+- [ ] Replace the generic case studies in `work.projects` with real results as they happen
+- [ ] Individual credential links (`url`) for Platzi, Huawei, Met Conecta, UPV, Maryland, Empower Data and IBM — for now the section links to the LinkedIn certifications page
+- [ ] Issuer logos for Huawei, Met Conecta, UPV, Maryland, Empower Data and IBM
 - [ ] Date for the IBM Python certificate
-- [ ] Production domain in `src/content/site.ts` (`site.url`)
-- [ ] Decide whether the phone number in the public CV PDFs stays
+
+No phone numbers anywhere on the site or in the CV PDFs: contact is email + LinkedIn only.

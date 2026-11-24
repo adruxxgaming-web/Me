@@ -85,9 +85,13 @@ export function Animations() {
     // Layout can shift once fonts/images settle.
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);
+    // Opening/closing a <details> case study moves everything below it.
+    // `toggle` does not bubble, so listen in the capture phase.
+    document.addEventListener("toggle", refresh, true);
 
     return () => {
       window.removeEventListener("load", refresh);
+      document.removeEventListener("toggle", refresh, true);
       mm.revert();
     };
   }, [pathname]);

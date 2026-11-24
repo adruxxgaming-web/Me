@@ -3,6 +3,7 @@ import type { Dictionary } from "@/content/types";
 import type { Locale } from "@/i18n";
 import { certifications, issuerLogos } from "@/content/certifications";
 import { Section } from "@/components/ui/Section";
+import { site } from "@/content/site";
 
 const MONTHS = {
   en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -79,11 +80,24 @@ export function Certifications({
       title={t.title}
       intro={t.intro}
     >
-      <div data-reveal className="flex items-end gap-4">
-        <span className="display text-[clamp(4rem,10vw,7rem)] text-crimson">
-          {certifications.length}
-        </span>
-        <span className="label pb-3 text-silver">{t.totalLabel}</span>
+      <div
+        data-reveal
+        className="flex flex-wrap items-end justify-between gap-6"
+      >
+        <div className="flex items-end gap-4">
+          <span className="display text-[clamp(4rem,10vw,7rem)] text-crimson">
+            {certifications.length}
+          </span>
+          <span className="label pb-3 text-silver">{t.totalLabel}</span>
+        </div>
+        <a
+          href={site.linkedinCertifications}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="label mb-3 rounded-[2px] border border-line px-5 py-3 text-paper transition-colors hover:border-crimson hover:text-crimson-bright"
+        >
+          {t.linkedinCta} ↗
+        </a>
       </div>
 
       <p className="label mt-12 text-mute">{t.highlightsTitle}</p>

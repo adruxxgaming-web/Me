@@ -9,9 +9,9 @@ export interface Certification {
   date: string | null;
   /** "YYYY-MM", for credentials that expire. */
   expires?: string;
-  /** Kept for later (verification links); not shown yet. */
+  /** Issuer credential ID; not shown on the page. */
   credentialId?: string;
-  /** Public verification link. null = still to fill in. */
+  /** Public verification link. null = only verifiable via LinkedIn. */
   url: string | null;
   /** Shown as a large card; the rest go in the compact list. */
   featured?: boolean;
@@ -48,7 +48,7 @@ export const certifications: Certification[] = [
     issuer: "Anthropic",
     date: "2026-07",
     credentialId: "6zwm87sius4q",
-    url: null,
+    url: "https://verify.skilljar.com/c/6zwm87sius4q",
     featured: true,
   },
   {
@@ -57,7 +57,7 @@ export const certifications: Certification[] = [
     issuer: "Anthropic",
     date: "2026-07",
     credentialId: "x7ybyom62y2p",
-    url: null,
+    url: "https://verify.skilljar.com/c/x7ybyom62y2p",
     featured: true,
   },
   {
@@ -76,7 +76,7 @@ export const certifications: Certification[] = [
     issuer: "edX",
     date: "2025-07",
     credentialId: "b45569f3964f42c9a7d44930c3f674b3",
-    url: null,
+    url: "https://courses.edx.org/certificates/b45569f3964f42c9a7d44930c3f674b3",
     featured: true,
   },
   {
