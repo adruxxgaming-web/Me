@@ -425,6 +425,7 @@ export const es: Dictionary = {
     portfolio: { label: "Portafolio profesional", hint: "Proyectos, experiencia y certificaciones" },
     personal: { label: "Más allá del trabajo", hint: "Videojuegos, deporte y la persona detrás del trabajo" },
     cv: { label: "Descargar CV", hint: "PDF · Español" },
+    companyHint: "Mi empresa · sotesa.mx",
     socialsTitle: "Encuéntrame en",
     emailLabel: "Correo",
   },

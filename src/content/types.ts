@@ -142,6 +142,7 @@ export interface Dictionary {
     portfolio: { label: string; hint: string };
     personal: { label: string; hint: string };
     cv: { label: string; hint: string };
+    companyHint: string;
     socialsTitle: string;
     emailLabel: string;
   };

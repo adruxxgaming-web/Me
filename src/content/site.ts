@@ -5,6 +5,10 @@ export const site = {
   email: "adrian.hinojosa@sotesa.mx",
   // Production URL (used for metadata / hreflang). Update if a custom domain is added.
   url: "https://adrianportfolio-blush.vercel.app",
+  company: {
+    name: "STT — Soporte Técnico Total",
+    url: "https://www.sotesa.mx/",
+  },
   // Every certification (with its credential link) is listed here.
   linkedinCertifications:
     "https://www.linkedin.com/in/adri%C3%A1n-hinojosa-082548180/details/certifications/",

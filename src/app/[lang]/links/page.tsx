@@ -194,6 +194,15 @@ export default async function LinksPage({
                 download
               />
             </li>
+            <li data-hero-fade>
+              <Row
+                href={site.company.url}
+                icon="building"
+                label={site.company.name}
+                hint={links.companyHint}
+                external
+              />
+            </li>
           </ul>
 
           {/* ── Socials ── */}
